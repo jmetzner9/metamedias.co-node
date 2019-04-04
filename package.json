@@ -5,14 +5,15 @@
   "scripts": {
     "pm2": "pm2",
     "gulp": "gulp",
-    "start": "node ./bin/www",
     "start:staging": "pm2 start",
     "dev": "concurrently \"pm2 start\" \"gulp\"",
     "monitor": "pm2 monit",
     "reload-env": "pm2 reload --update-env ecosystem.config.js",
     "stop": "pm2 stop ecosystem.config.js",
     "delete": "pm2 delete ecosystem.config.js",
-    "knex": "knex --knexfile ./db/knexfile.js --debug"
+    "knex": "knex --knexfile ./db/knexfile.js --debug",
+    "build": "bower install && grunt build",
+    "start": "nf start"
   },
   "dependencies": {
     "async-middleware": "^1.2.1",
