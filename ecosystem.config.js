@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'argon-free-backend',
+      name: 'MetaMedias',
       script: './bin/www',
 
       node_args: ['--inspect=0.0.0.0:9229'],
