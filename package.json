@@ -26,7 +26,6 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "del": "^3.0.0",
-    "dotenv": "^6.2.0",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
     "express-ejs-layouts": "^2.5.0",
@@ -61,6 +60,7 @@
     "postcss-flexbugs-fixes": "^3.3.1"
   },
   "devDependencies": {
+    "dotenv": "^6.2.0",
     "eslint": "^5.13.0",
     "eslint-config": "^0.3.0",
     "eslint-config-airbnb": "^17.1.0",
