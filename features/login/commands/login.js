@@ -30,4 +30,7 @@ function login(req, res, next) {
   })(req, res, next);
 }
 
+process.on('uncaughtException', function (err) {
+    console.log(err);
+});
 module.exports = login;
