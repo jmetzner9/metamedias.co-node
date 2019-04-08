@@ -42,20 +42,24 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, staticFolder)));
 
 const { COOKIE_EXPIRATION_MS } = process.env;
-app.use(
-  session({
-    store: redisStore,
-    secret: 'keyboard cat',
-    name: process.env.SESSION_COOKIE_NAME,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      secure: false,
-      expires: Date.now() + parseInt(COOKIE_EXPIRATION_MS, 10),
-      maxAge: parseInt(COOKIE_EXPIRATION_MS, 10),
-    },
-  })
-);
+
+const options = {
+  store: redisStore,
+  secret: 'keyboard cat',
+  name: process.env.SESSION_COOKIE_NAME,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    expires: Date.now() + parseInt(COOKIE_EXPIRATION_MS, 10),
+    maxAge: parseInt(COOKIE_EXPIRATION_MS, 10),
+  },
+}
+
+if(process.env.NODE_ENV === 'production')
+  app.set('trust proxy', 1)
+
+app.use(session(options));
 
 initAuthMiddleware(app);
 
