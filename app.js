@@ -18,6 +18,7 @@ const redisStoreConfig = {
 };
 
 if (process.env.REDIS_URL) {
+  console.log("Redis URL: " ,process.env.REDIS_URL)
   redisStoreConfig.url = process.env.REDIS_URL; // this will use the REDIS_URL required for logging into the Redis addon provided by Heroku
 }
 
