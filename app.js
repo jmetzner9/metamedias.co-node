@@ -18,7 +18,6 @@ const redisStoreConfig = {
 };
 
 if (process.env.REDIS_URL) {
-  console.log("Redis URL: " ,process.env.REDIS_URL)
   redisStoreConfig.url = process.env.REDIS_URL; // this will use the REDIS_URL required for logging into the Redis addon provided by Heroku
 }
 
@@ -63,6 +62,7 @@ initAuthMiddleware(app);
 // Middleware used for setting error and success messages as available in _ejs_ templates
 app.use((req, res, next) => {
   if (req.session) {
+    console.log("Session: ",req.session)
     res.locals.messages = req.session.messages;
     res.locals.userInfo = req.session.userInfo;
     req.session.messages = {};
