@@ -50,7 +50,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
+      secure: false,
       expires: Date.now() + parseInt(COOKIE_EXPIRATION_MS, 10),
       maxAge: parseInt(COOKIE_EXPIRATION_MS, 10),
     },
@@ -62,7 +62,6 @@ initAuthMiddleware(app);
 // Middleware used for setting error and success messages as available in _ejs_ templates
 app.use((req, res, next) => {
   if (req.session) {
-    console.log("Session: ",req.session)
     res.locals.messages = req.session.messages;
     res.locals.userInfo = req.session.userInfo;
     req.session.messages = {};
